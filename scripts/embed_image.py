@@ -15,12 +15,12 @@ sam = sam_model_registry[model_type](checkpoint=checkpoint)
 sam.to(device='mps')
 predictor = SamPredictor(sam)
 
-image = cv2.imread('demo/src/assets/data/dogs.jpg')
+image = cv2.imread('demo/src/assets/data/oc-harley.jpeg')
 predictor.set_image(image)
 image_embedding = predictor.get_image_embedding().cpu().numpy()
 
 try:
-    np.save("dogs_embedding.npy", image_embedding)
+    np.save("demo/src/assets/data/oc-harley.npy", image_embedding)
     print("Saved image embedding.")
 except Exception as e:
     print("Error saving image embedding:", e)
